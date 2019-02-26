@@ -38,46 +38,30 @@ def input_students
   name = STDIN.gets.chomp
   while !name.empty? do
     @students << {name: name, cohort: :november}
-    if @students.length == 1
-      puts "Now we have #{@students.count} student"
-    else
-      puts "Now we have #{@students.count} students"
-    end
-  name = STDIN.gets.chomp
+    puts "Now we have #{@students.count} students"
+    name = STDIN.gets.chomp
   end
 end
 
 def show_students
-  if @students.length > 0
     print_header
     print_student_list
     print_footer
-  else
-    puts "Welcome to Villains Academy".center(150)
-    puts "Currently enrolling students".center(150)
-    puts "-------------".center(150)
-  end
 end
 
 def print_header
-  puts "The students of Villains Academy".center(150)
-  puts "-------------".center(150)
+  puts "The students of Villains Academy"
+  puts "-------------"
 end
 
 def print_student_list
-  i = 1
-  @students.each do |students|
-    puts "#{i}. #{@students[i][:name]} (#{@students[i][:cohort]} cohort)".center(150)
-    i += 1
+  @students.each do |student|
+    puts "#{student[:name]} (#{student[:cohort]} cohort)"
   end
 end
 
 def print_footer
-  if @students.length == 1
-    puts "Overall, we have #{@students.count} great student".center(150)
-  else
-    puts "Overall, we have #{@students.count} great students".center(150)
-  end
+    puts "Overall, we have #{@students.count} great students"
 end
 
 def save_students
